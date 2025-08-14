@@ -1,4 +1,4 @@
-package com.comandacheck
+package com.anonymous.comandacheck
 
 import android.app.Application
 import android.content.res.Configuration
