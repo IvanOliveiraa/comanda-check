@@ -1,8 +1,13 @@
 {
   "expo": {
-    "name": "comanda check",
-    "slug": "comanda-check",
-    "icon": "./assets/icon.png",
+    "name": "Ponto check",
+    "slug": "ponto-check",
+    "icon": "./assets/splash.jpg",
+    "splash": {
+      "image": "./assets/splash-android.png",
+      "backgroundColor": "#000000",
+      "resizeMode": "cover"
+    },
     "version": "1.0.0",
     "plugins": [
       [
@@ -19,7 +24,18 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.anonymous.comandacheck"
+      "splash": {
+        "image": "./assets/splash.jpg",
+        "backgroundColor": "#000000",
+        "resizeMode": "cover"
+      },
+      "package": "com.anonymous.comandacheck",
+      "usesCleartextTraffic": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ab576cce-03d4-4d63-be81-53936360db22"
+      }
     }
   }
 }

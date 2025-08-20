@@ -97,8 +97,11 @@ export default function App() {
         setTimeout(() => setAlertVisible(false), 5000);
       }
     } catch (error) {
-      console.error(error);
-      Alert.alert("Erro", "Não foi possível verificar o status da comanda.");
+      console.error("Fetch error:", error);
+      Alert.alert(
+        "Erro ao verificar comanda",
+        error.message || "Não foi possível verificar o status da comanda."
+      );
     }
   }
   return (
