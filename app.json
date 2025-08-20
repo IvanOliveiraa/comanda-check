@@ -2,7 +2,7 @@
   "expo": {
     "name": "Ponto check",
     "slug": "ponto-check",
-    "icon": "./assets/splash.jpg",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash-android.png",
       "backgroundColor": "#000000",
