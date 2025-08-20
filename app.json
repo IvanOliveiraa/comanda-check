@@ -4,7 +4,7 @@
     "slug": "ponto-check",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash-android.png",
+      "image": "./assets/splash.png",
       "backgroundColor": "#000000",
       "resizeMode": "cover"
     },
@@ -25,7 +25,7 @@
         "android.permission.RECORD_AUDIO"
       ],
       "splash": {
-        "image": "./assets/splash.jpg",
+        "image": "./assets/splash.png",
         "backgroundColor": "#000000",
         "resizeMode": "cover"
       },
