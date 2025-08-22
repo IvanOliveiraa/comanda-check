@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Ponto check",
-    "slug": "ponto-check",
+    "slug": "comanda-check",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
