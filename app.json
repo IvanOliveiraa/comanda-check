@@ -20,6 +20,7 @@
       ]
     ],
     "android": {
+      "icon": "./assets/icon.png",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
