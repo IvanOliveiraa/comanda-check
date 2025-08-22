@@ -17,6 +17,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 export default function App() {
   const [modalCamIsVisisble, setModalCamIsVisisble] = useState(false);
   const [modalConfigIsVisible, setModalConfigIsVisible] = useState(false);
+  const [modalConfirmIsVisible, setModalConfirmIsVisible] = useState(false);
   const [ipHost, setIpHost] = useState("");
   const [savedIp, setSavedIp] = useState("");
   const [permission, requestPermission] = useCameraPermissions();
@@ -24,6 +25,8 @@ export default function App() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertTitle, setAlertTitle] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
+  const [scannedCode, setScannedCode] = useState("");
+  const [confirmModalVisible, setConfirmModalVisible] = useState(false);
 
   useEffect(() => {
     const carregarIp = async () => {
@@ -165,7 +168,8 @@ export default function App() {
           facing="back"
           onBarcodeScanned={({ data }) => {
             if (data && !codigoLido.current) {
-              setTimeout(() => LerCodigo(data), 500);
+              setScannedCode(data);
+              setConfirmModalVisible(true);
               codigoLido.current = true;
             }
           }}
@@ -180,6 +184,41 @@ export default function App() {
           />
         </View>
       </Modal>
+
+      {confirmModalVisible && (
+        <Modal
+          visible={confirmModalVisible}
+          transparent={true}
+          animationType="slide"
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text>Código Lido</Text>
+              <TextInput
+                style={styles.input}
+                value={scannedCode}
+                onChangeText={setScannedCode}
+              />
+              <View style={styles.footerconfigmodal}>
+                <Button
+                  title="Cancelar"
+                  onPress={() => {
+                    setConfirmModalVisible(false);
+                    codigoLido.current = false;
+                  }}
+                />
+                <Button
+                  title="Confirmar"
+                  onPress={() => {
+                    LerCodigo(scannedCode);
+                    setConfirmModalVisible(false);
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
+      )}
 
       {/* Config Modal */}
       <Modal
