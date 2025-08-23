@@ -93,6 +93,11 @@ export default function App() {
         setAlertMessage("A Comanda ainda está aberta");
         setAlertVisible(true);
         setTimeout(() => setAlertVisible(false), 5000);
+      } else if (json.status === "Comanda bloqueada") {
+        setAlertTitle(`Cartão: ${data}`);
+        setAlertMessage("A comanda está bloqueada");
+        setAlertVisible(true);
+        setTimeout(() => setAlertVisible(false), 5000);
       } else {
         setAlertTitle(`Cartão: ${data}`);
         setAlertMessage("A Comanda está disponível");
@@ -112,14 +117,16 @@ export default function App() {
       {alertVisible && (
         <View
           style={
-            alertMessage.includes("ainda está aberta")
+            alertMessage.includes("ainda está aberta") ||
+            alertMessage.includes("bloqueada")
               ? styles.alertError
               : styles.alertSuccess
           }
         >
           <Text
             style={
-              alertMessage.includes("ainda está aberta")
+              alertMessage.includes("ainda está aberta") ||
+              alertMessage.includes("bloqueada")
                 ? styles.alertTextError
                 : styles.alertTextSuccess
             }
@@ -128,7 +135,8 @@ export default function App() {
           </Text>
           <Text
             style={
-              alertMessage.includes("ainda está aberta")
+              alertMessage.includes("ainda está aberta") ||
+              alertMessage.includes("bloqueada")
                 ? styles.alertTextError
                 : styles.alertTextSuccess
             }
@@ -141,7 +149,8 @@ export default function App() {
           >
             <Text
               style={
-                alertMessage.includes("ainda está aberta")
+                alertMessage.includes("ainda está aberta") ||
+                alertMessage.includes("bloqueada")
                   ? styles.alertTextError
                   : styles.alertTextSuccess
               }
@@ -193,11 +202,12 @@ export default function App() {
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
-              <Text>Código Lido</Text>
+              <Text style={{ color: "white" }}>Código da comanda:</Text>
               <TextInput
                 style={styles.input}
                 value={scannedCode}
                 onChangeText={setScannedCode}
+                keyboardType="numeric"
               />
               <View style={styles.footerconfigmodal}>
                 <Button
@@ -277,20 +287,24 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
+    color: "white",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContent: {
-    backgroundColor: "rgba(255, 255, 255, 1)",
+    backgroundColor: "#333",
+    color: "white",
     padding: 20,
     borderRadius: 10,
     width: "80%",
   },
   input: {
     height: 40,
-    borderColor: "gray",
+    backgroundColor: "#444",
+    borderColor: "#555",
     borderWidth: 1,
+    color: "#fff",
     marginBottom: 20,
     paddingHorizontal: 10,
   },
